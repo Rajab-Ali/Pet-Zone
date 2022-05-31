@@ -1,0 +1,10 @@
+.review-card{
+    float: none;
+    margin: 5px auto;
+}
+.line{
+    width: 400px;
+    height: 1px;
+    background-color: rgb(140, 138, 138);
+    margin: 30px auto 10px auto;
+}

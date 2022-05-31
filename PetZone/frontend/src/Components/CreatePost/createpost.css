@@ -1,0 +1,85 @@
+.user-info-card{
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.profile-img{
+    width: 50px;
+    border-radius: 50%;
+    margin: 2px;
+}
+.create-post-modal-trigger{
+    margin-left: 10px;
+    padding: 15px;
+    flex: 0 0 100%;
+    border: 1px solid darkgray;
+    border-radius: 50px;
+    height: 45px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.create-post-modal-trigger p{
+    padding-bottom: 5px;
+    margin-bottom: 0px !important;
+}
+.create-post-line{
+    margin: 16px auto;
+    width: 95%;
+    height: 1px;
+    background-color: rgb(116, 116, 116);
+    border-radius: 50%;
+}
+
+
+/*... modal styling... */
+
+.modal-user-info-cont{
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.modal-add-to-post{
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.uploaded-image{
+    width: 100%;
+    height: 400px;
+    object-position: center;
+    object-fit: 100% 100%;
+}
+.add-to-post-icons{
+    flex: 0 0 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.upload-img{
+    height: 24px;
+    width: 24px;
+    background-position: 0px -182px;
+    background-size: 26px 476px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }

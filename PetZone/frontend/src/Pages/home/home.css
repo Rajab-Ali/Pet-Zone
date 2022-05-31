@@ -1,0 +1,14 @@
+
+.news-feed-cont{
+    
+    float: none;
+    margin: 10px auto;
+    transition: all 0.5s ease-out;
+}
+.alert{
+    transition: all 0.5s ease-out;
+}
+.news-feed-body{
+    position: relative;
+    width: 100%;
+}

@@ -1,0 +1,10 @@
+.product-card{
+    width: 260px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 5px;
+    transition: all 400ms ease-in-out;
+}
+.product-card:hover{
+    transform: scale(1.05);
+}

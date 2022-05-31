@@ -1,0 +1,42 @@
+.login-main-cont{
+    min-height: 120vh;
+}
+.login-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login-body{
+    background-color: white;
+    padding: 5px 30px 20px 30px;
+    max-width: 512px;
+    width: 425px;
+    box-shadow: 0px 4px 24px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+}
+.login-logo-cont{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo-img{
+    width: 240px;
+    height: 160px;
+}
+.logo-heading{
+    position: absolute;
+    top: 76%;
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: 24px;
+
+}
+.form-control:focus{
+    border: none;
+}
+.form-group button{
+    cursor: pointer;
+}
