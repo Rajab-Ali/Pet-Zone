@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
-import ProfileImg from '../../Images/profileImg.jpg'
 import UploadImgIcon from '../../Images/uploadImg.png'
 
-const Index = ({setBanner,setVariant}) => {
+const Index = ({addBlog, blogAuthor, authorImage, setBanner, setVariant}) => {
     const [img,setImg] = useState('')
+    const [blogTitle,setBlogTitle] = useState('')
+    const [blogDescription, setBlogDescription] = useState('')
+
+    const blog={
+      blogAuthor:blogAuthor,
+      blogTitle:blogTitle,
+      blogDescription:blogDescription,
+      blogImage:img,
+      blogLikes:0,
+    }
     return (
     <>
     <div className=' card rounded-4 m-4 py-4 px-3'>
             <div className='user-info-card'>
-                <img className='profile-img' src={ProfileImg} alt='profile img' loading='lazy' />
+                <img className='profile-img' src={authorImage} alt='profile img' loading='lazy' />
                 <div className='create-post-modal-trigger' data-mdb-toggle="modal" data-mdb-target="#exampleModal" ><p>Create your blog....</p></div>
             </div>
         </div>
@@ -25,19 +34,19 @@ const Index = ({setBanner,setVariant}) => {
       </div>
       <div class="modal-body">
       <div className='user-info-card'>
-                <img className='profile-img' src={ProfileImg} alt='profile img' loading='lazy' />
+                <img className='profile-img' src={authorImage} alt='profile img' loading='lazy' />
                 <div className=' modal-user-info-cont'>
-                    <p className='ms-2'>CH. Rajab Ali</p>
+                    <p className='ms-2'>{blogAuthor}</p>
                 </div>
             </div> 
             <div className='mt-3'>
                 <form>
                 <div className='form-floating mb-3'>
-                        <input className='form-control' type='text'id='blogtitleid' placeholder=" " /> 
+                        <input onChange={(e)=> setBlogTitle(e.target.value)} className='form-control' type='text'id='blogtitleid' placeholder=" " value={blogTitle} /> 
                         <label htmlfor='blogtitleid'>Blog title</label>
                     </div>
                     <div className='form-group'>
-                        <textarea className='form-control' type='text' placeholder="What's on your mind? Mr. XYZ" rows={4}></textarea> 
+                        <textarea onChange={(e)=> setBlogDescription(e.target.value)} value={blogDescription} className='form-control' type='text' placeholder="What's on your mind? Mr. XYZ" rows={4}></textarea> 
                     </div>
                 </form>
                 <div style={{display:img===''?'none':''}} className='mt-3 p-3'>
@@ -59,6 +68,7 @@ const Index = ({setBanner,setVariant}) => {
       </div>
       <div class="modal-footer">
         <button onClick={()=> {
+          addBlog(blog)
           setBanner(true)
           setVariant('success')
           setImg('')

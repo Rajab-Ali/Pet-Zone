@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../../Layout'
 import CreateBlog from '../../Components/CreateBlog'
 import BlogCard from '../../Components/ShowBlog'
-import BlogImg1 from '../../Images/blogImg1.jpg'
-import BlogImg2 from '../../Images/blogImg2.jpg'
+import ProfileImg from '../../Images/profileImg.jpg'
+//context
+import { blogContext } from '../../blogContext/blogContext'
 
+//styling
 import Alert from "react-bootstrap/Alert";
 
 const Index = () => {
     const [banner,setBanner] = useState(false)
     const [variant,setVariant]= useState('')
+
     useEffect(()=>{
         const timer = setTimeout(() => {
             setBanner(false)
@@ -17,6 +20,10 @@ const Index = () => {
           console.log('test');
           return () => clearTimeout(timer);
     },[banner])
+
+    const useBlogContext = useContext(blogContext)
+    const { blogs, addBlog, likeBlog, dislikeBlog} = useBlogContext
+
   return (
         <Layout>
             <div className='col-md-12'>
@@ -27,10 +34,24 @@ const Index = () => {
           </div>
           <div className='col-md-7 news-feed-cont'>
               <div className='news-feed-body'>
-                    <CreateBlog setBanner={setBanner} setVariant={setVariant} />
+                    <CreateBlog addBlog={addBlog} blogAuthor={'Isha Malik'} authorImage={ProfileImg} setBanner={setBanner} setVariant={setVariant} />
                     <div className='mt-3'>
-                        <BlogCard heading={'Little Persian Cats'} postedby={'Ch. Rajab Ali'} blogImg={BlogImg1} />
-                        <BlogCard heading={'Siberian Husky'} postedby={'Fahad'} blogImg={BlogImg2} />
+                      {
+                        blogs.map(blog=>{
+                          return <BlogCard 
+                          key={blog.blogId}
+                          blogTitle={blog.blogTitle}
+                          blogAuthor={blog.blogAuthor}
+                          blogImage={blog.blogImage}
+                          blogDescription={blog.blogDescription}
+                          blogId={blog.blogId}
+                          blogLikes= {blog.blogLikes}
+                          likeBlog= {likeBlog}
+                          dislikeBlog = {dislikeBlog}
+                          />
+                        })
+                      }
+
                     </div>
               </div>
           </div>

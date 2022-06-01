@@ -2,14 +2,23 @@ import React, { useState } from 'react'
 import ProfileImg from '../../Images/profileImg.jpg'
 import UploadImgIcon from '../../Images/uploadImg.png'
 import './createpost.css'
-const Index = ({banner, setBanner , setVariant}) => {
+const Index = ({ postAuthor, authorImage, addPost, banner, setBanner, setVariant }) => {
+  const [postDescription,setPostDescription] = useState('')
   const [img,setImg] = useState('')
+
+  const post={
+    postAuthor:postAuthor,
+    authorImage:authorImage,
+    postDescription:postDescription,
+    postImage:img,
+    postLikes:0,
+  }
   return (
       <>  
         <div className=' card rounded-4 m-4 py-4 px-3'>
             <div className='user-info-card'>
-                <img className='profile-img' src={ProfileImg} alt='profile img' loading='lazy' />
-                <div className='create-post-modal-trigger' data-mdb-toggle="modal" data-mdb-target="#exampleModal" ><p>What's on your mind? Mr. XYZ</p></div>
+                <img className='profile-img' src={authorImage} alt='profile img' loading='lazy' />
+                <div className='create-post-modal-trigger' data-mdb-toggle="modal" data-mdb-target="#exampleModal" ><p>What's on your mind? {postAuthor}</p></div>
             </div>
         </div>
 
@@ -25,15 +34,15 @@ const Index = ({banner, setBanner , setVariant}) => {
       </div>
       <div class="modal-body">
       <div className='user-info-card'>
-                <img className='profile-img' src={ProfileImg} alt='profile img' loading='lazy' />
+                <img className='profile-img' src={authorImage} alt='profile img' loading='lazy' />
                 <div className=' modal-user-info-cont'>
-                    <p className='ms-2'>CH. Rajab Ali</p>
+                    <p className='ms-2'>{postAuthor}</p>
                 </div>
             </div> 
             <div className='mt-3'>
                 <form>
                     <div className='form-group'>
-                        <textarea className='form-control' type='text' placeholder="What's on your mind? Mr. XYZ" rows={4}></textarea> 
+                        <textarea onChange={(e)=> setPostDescription(e.target.value)} className='form-control' type='text' placeholder="What's on your mind? Mr. XYZ" rows={4} value={postDescription}></textarea> 
                     </div>
                 </form>
                 <div style={{display:img===''?'none':''}} className='mt-3 p-3'>
@@ -55,6 +64,7 @@ const Index = ({banner, setBanner , setVariant}) => {
       </div>
       <div class="modal-footer">
         <button onClick={()=> {
+          addPost(post)
           setBanner(true)
           setVariant('success')
           setImg('')
